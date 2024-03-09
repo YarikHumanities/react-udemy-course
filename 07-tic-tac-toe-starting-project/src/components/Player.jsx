@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(initialName);
 
@@ -9,6 +14,9 @@ export default function Player({ initialName, symbol, isActive }) {
     //React internally passes the CURRENT state value as
     //an argument to that function. !!!CURRENT BY THE MOMENT OF SCHEDULED EXECUTION OF STATE CHANGING
     setIsEditing((editing) => !editing);
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
 
   function handleChange(event) {
