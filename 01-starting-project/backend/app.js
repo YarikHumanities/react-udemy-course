@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import express from 'express';
 
 const app = express();
-console.log("Hello")
 
 app.use(express.static('images'));
 app.use(bodyParser.json());
